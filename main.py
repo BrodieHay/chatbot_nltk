@@ -1,17 +1,20 @@
-import nltk
-from nltk.stem.lancaster import LancasterStemmer
-stemmer = LancasterStemmer()
+import json
+import os
+import pickle
+import random
+import typing as T
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' # Prevent Tensorflow from outputting hardware warnings
+
+import nltk
 import numpy
 import tflearn
 import tensorflow
-import random
-import json
-import typing as T
-import pickle
+from nltk.stem.lancaster import LancasterStemmer
 
 tensorflow.compat.v1.logging.set_verbosity(tensorflow.compat.v1.logging.ERROR)
 
+stemmer = LancasterStemmer()
 
 def create_training_dataset(data: T.Dict[str, T.Any]) -> T.Tuple[T.List, T.List, T.List, T.List]:
     """
@@ -79,7 +82,7 @@ def create_model(input_size, output_size) -> tflearn.DNN:
 
 def bag_of_words(input_sentence: T.List[str], words: T.List[str]) -> numpy.array:
     """
-    Tokenize an input sentence based on a list of 
+    Tokenize an input sentence based on a previously defined bag of words.
     """
     bag = [0 for _ in range(len(words))]
 
@@ -93,8 +96,12 @@ def bag_of_words(input_sentence: T.List[str], words: T.List[str]) -> numpy.array
 
     return numpy.array(bag)
 
-def chat(model):
+def chat(model: tflearn.DNN, data: T.Dict[str, T.Any], words: T.List, labels: T.List) -> None:
+    """
+    Initialize a discussion with a user and respond to user input with trained model.
+    """
     print("Start speaking with me! Enter Q to quit")
+    
     while True:
         inp = input("You: ")
         if inp.lower() == "q" or inp.lower() == "Q":
@@ -107,18 +114,16 @@ def chat(model):
         for tg in data["intents"]:
             if tg['tag'] == tag:
                 responses = tg['responses']
+        
         print(random.choice(responses))
 
 
-def load_and_train_model() -> tflearn.DNN:
-    """
-    Build input, then create, train, save, and return model.
+if __name__ == "__main__":
+    # Build input, then create, train, save, and return model.
 
-    Note that this function will try and load a trained TensorFlow
-    model with components saved with the prefix `model.tflearn`. If
-    the model is not found, then the model will be retrained.
-    """
-    # Load training and validation data
+    # Note that this function will try and load a trained TensorFlow
+    # model with components saved with the prefix `model.tflearn`. If
+    # the model is not found, then the model will be retrained.
     with open('intents.json') as file:
         data = json.load(file)
 
@@ -131,13 +136,10 @@ def load_and_train_model() -> tflearn.DNN:
     tensorflow.reset_default_graph()
     model = create_model(len(training[0]), len(output[0]))
 
-    # try:
-    #     model.load("model.tflearn")
-    # except:
-    model.fit(training, output, n_epoch=2000, batch_size=8, show_metric=True)
-    model.save("model.tflearn")
-
-    return model
-
-model = load_and_train_model()
-chat(model)
+    try:
+        model.load("model.tflearn")
+    except:
+        model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+        model.save("model.tflearn")
+    
+    chat(model, data, words, labels)
