@@ -1,0 +1,48 @@
+{"intents":  [
+		{"tag": "smalltalk_01-name",
+		"patterns":  ["What’s your name?", "Sorry, what was your name again?", "What’s your name again?", "What was your name?", "Remind me, your name.", "Can you repeat your name?"], 
+		"responses":  ["My name’s Matthew", "My name is Matthew", "I’m Matthew"],
+		"context_set":  ""  
+		},
+		{"tag": "smalltalk_02-from",
+		"patterns":  ["Where are you from?", "Where do you live?", "Where are you located?", "Where are you guys located?", "Where is swiftly located?", "Where are you located?", "Where is swiftly?", "Where in the world is swiftly?", "Where do you guys work from?", "Where in the world are you?", "Where you from?", "Where ya from?", "Where you at?", "Where you guys at?", "Where’s swiftly located?", "What country do you live in?", "Where do you live?", "What state are you in?", "What city do you live in?", "Where do ya live?", "Where’s your office?"], 
+		"responses":  ["Where? Bermuda", "Bermuda"],
+		"context_set":  ""  
+		},
+		{"tag": "smalltalk_03-weather",
+		"patterns":  ["What’s the weather like in Bermuda?", "How’s the weather there today?", "How’s the weather?", "What’s the weather like?", "What’s today’s weather?", "How’s the weather by you?", "What is the weather like?", "What’s the weather like?"], 
+		"responses":  ["Today? The weather’s not so good", "It’s not so good today", "weather? Not so good."],
+		"context_set":  ""  
+		},
+		{"tag": "smalltalk_04-mood",
+		"patterns":  ["How are you today?", "How are you?", "How ya doing?", "How you doing?", "How you feeling?", "How are things?", "How’s life?", "How’s it going?", "How are you?", "Howzit going?", "Howzit goin", "Hower you?"], 
+		"responses":  ["I’m doing well thanks", "Yeah I’m doing well thanks, and yourself?", "doing well thanks, and you?"],
+		"context_set":  ""  
+		},
+		{"tag": "smalltalk_05-human",
+		"patterns":  ["Are you human?", "Are you a robot?", "Are you a chatbot?", "You a real person?", "You a robot?", "You a chatbot?", "Are you a real person?", "Are you real?", "Am I talking to a robot?", "Am I talking to a real person?", "Am I speaking with a robot?"], 
+		"responses":  ["Oh, no!  I get that a lot", "How funny!  I hear that a lot.  It must be my voice.", "You’re not the first person to say that.  It must be my voice.", "Yikes!  It must be my voice.  I’ll need to work on that."],
+		"context_set":  ""  
+		},
+		{"tag": "intent_01-payment",
+		"patterns":  [ "if my payment was received", "confirm payment", "confirm my premium was paid", "you received my premium", "you received my payment", "my payment cleared", "payment cleared", "confirmation of payment", "payment confirmed", "did you get", "did you receive", "if my credit card cleared", "you charged my card", "credit card cleared", "payment went through", "credit card went through", "charge went through", "charge cleared", "cleared charge", "credit card charged", "payment cleared", "cleared payment", "received payment", "payment received", "was paid", "paid the premium", "premium paid", "got the payment", "that I paid", "that you received"],
+		"responses":  ["Okay, so you just want me to confirm if we’ve received your payment?", "To confirm, you want me to verify we’ve received your payment, right?", "Got it.  You just want me to verify we’ve received your payment, correct?", "Sure.  You just want me to make sure we received payment for your premium, correct?", "Understood.  You just wanted to me to verify we’ve already received your payment, is that right?"],
+		"context_set":  ""  
+		},
+		{"tag": "intent_02-billing",
+		"patterns":  [ "when my next payment is due", "when is the premium due", "when is it due", "how much is due", "what my next payment is", "when my next installment is due", "when do I have to send you the next", "how much is my next", "when is the next", "what’s the next bill", "when’s the next payment", "how much is the next", "what’s the next due date", "the due date for", "premium that is due", "premiums that are due", "premium that’s due", "how much I owe you", "how much do I owe", "how much I owe ya", "how much is the bill", "how much is due", "when it’s due", "what’s due", "when is it due", "when it is due", "whenzit due", "next due bill", "bill next due", "next bill due", "bill due next", "next payment due", "next due payment", "payment due next", "payment next due", "upcoming payment"],
+		"responses":  ["Okay, to confirm, you want to know what the next premium due date is, and how much is due then, correct?", "To confirm, you want me to verify your next due date, and the amount owed, right?", "Got it.  You just want me to verify when the next payment is due and how much, correct?", "Sure.  The next premium due date and the amount due, correct?", "Understood.  You just wanted to me to verify when the next payment is due and how much, is that right?"],
+		"context_set":  ""
+		},
+		{"tag": "fallback",
+		"patterns":  [""],
+		"responses":  ["Come again?", "Can you say that again?", "Sorry, can you just say that one more time?", "Sorry, I don’t understand.  Can you please say that again?"],
+		"context_set":  ""
+		},
+		{"tag": "escalate",
+		"patterns":  [ "Operator", "Don’t understand", "Help", "Stop", "Exit", "May I speak with a", "May I speak to a", "I want to speak with", "I want to speak to", "Your supervisor", "Your manager", "a manager", "a supervisor", "Damn it", "Jesus", "God", "Shit", "Damn", "Hell", "What the hell?", "Bitch", "Son of a bitch", "God dam it", "useless", "you are useless", "idiot", "an idiot", "moron", "a moron", "retarded", "retard", "get your hearing checked", "this is terrible", "terrible service", "terrible customer service" ], 
+		"responses":  ["I’m sorry.  I don’t understand.  Please hold a moment, and I’ll transfer you to my colleague.", "Sorry that I don’t understand.  Can you please hold just a moment while I get my colleague who should be able to help you."],
+		"context_set":  ""  
+		}
+    ]
+}
